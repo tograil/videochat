@@ -9,19 +9,23 @@ var webrtc = new SimpleWebRTC({
     autoRequestMedia: true,
     debug: false,
     detectSpeakingEvents: true,
-    autoAdjustMic: false
+    autoAdjustMic: false,
+    url: 'http://localhost:8888/'
 });
 
 app.controller('video', [ '$scope', function ($scope) {
-    $scope.createRoom = function () {
-        webrtc.createRoom('andrew', function (err, name) {
-            webrtc.joinRoom('andrew');
-        });
-    }
+    webrtc.on('readyToCall', function () {
+        $scope.createRoom = function () {
+            webrtc.createRoom('andrew', function (err, name) {
+                alert('created');
+            });
+        }
 
-    $scope.joinRoom = function () {
-        webrtc.joinRoom('andrew');
-    }
+        $scope.joinRoom = function () {
+            webrtc.joinRoom('andrew');
+        }
+    });
+
 }]);
 
 
