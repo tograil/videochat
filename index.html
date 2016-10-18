@@ -2,10 +2,13 @@
 <html>
 <head>
     <script src="https://simplewebrtc.com/latest-v2.js"></script>
+    <script src="angular.js"></script>
     <script src="video.js"></script>
 </head>
-<body>
+<body ng-app="app" ng-controller="video">
 <video height="300" id="localVideo"></video>
 <div id="remotesVideos"></div>
+<button id="room" ng-click="createRoom()">Create Room</button>
+<button id="room2" ng-click="joinRoom()">Join Room</button>
 </body>
 </html>
